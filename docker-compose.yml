@@ -1,0 +1,8 @@
+services:
+  bot:
+    build: .
+    container_name: is-this-true
+    # DISCORD_TOKEN comes from .env at runtime, it never gets baked into the image
+    env_file: .env
+    restart: unless-stopped
+    # the bot only makes outbound connections, so no ports needed
