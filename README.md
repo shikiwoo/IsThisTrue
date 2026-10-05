@@ -1,6 +1,6 @@
 # IsThisTrue
 
-Legally distinct Discord bot. Ping it with "is this true" (like `@grok is this true`) and it answers using the most reliable method known to man - gambling. zero fact checking.
+Legally distinct Discord bot. Ping it (like `@grok is this true`, or really any ping) and it answers using the most reliable method known to man - gambling. zero fact checking.
 
 ## Setup
 
@@ -12,7 +12,7 @@ Legally distinct Discord bot. Ping it with "is this true" (like `@grok is this t
 
 ## How it works
 
-It listens to every message and only replies if the bot got @mentioned AND the message contains "is this true" (also matches "is that true" / "is it true"). Plain pings or the phrase without a ping get ignored.
+It listens to every message and replies to any message that @mentions the bot, whatever the text says. No ping, no answer. @everyone and role pings don't count.
 
 ## Run it as a systemd service
 
