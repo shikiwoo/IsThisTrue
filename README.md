@@ -34,3 +34,22 @@ sudo systemctl enable --now is-this-true
 ```
 
 Check on it with `systemctl status is-this-true` and `journalctl -u is-this-true -f`.
+
+## Run it with Docker
+
+Alternative to systemd. You need Docker with the compose plugin and a `.env` file with your token (same as setup step 4). The token is read at runtime and never baked into the image (`.dockerignore` keeps `.env` out of the build).
+
+```fish
+cp .env.example .env
+nano .env    # paste your token
+docker compose up -d --build
+```
+
+Check on it with `docker compose logs -f`, stop it with `docker compose down`. It restarts itself after crashes and reboots (`restart: unless-stopped`).
+
+No docker compose? Plain docker works too:
+
+```fish
+docker build -t is-this-true .
+docker run -d --name is-this-true --restart unless-stopped --env-file .env is-this-true
+```
