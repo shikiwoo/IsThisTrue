@@ -13,8 +13,8 @@ const client = new Client({
 const ANSWERS = ['yea', 'no lol'];
 const pickAnswer = () => ANSWERS[Math.floor(Math.random() * ANSWERS.length)];
 
-// matches plain text "@grok" (case insensitive) since there's no real user by that name
-const GROK_RE = /@grok\b/i;
+// the actual question, case insensitive, allows "is this true?" "is this true???" etc
+const QUESTION_RE = /\bis\s+(this|that|it)\s+true\b/i;
 
 client.once(Events.ClientReady, (c) => {
   console.log(`logged in as ${c.user.tag}`);
@@ -27,9 +27,11 @@ client.on(Events.MessageCreate, async (message) => {
     ignoreEveryone: true,
     ignoreRoles: true,
   });
-  const saidGrok = GROK_RE.test(message.content);
+  if (!pinged) return;
 
-  if (!pinged && !saidGrok) return;
+  // strip the mention(s) so only the text around the ping gets checked
+  const text = message.content.replace(/<@!?\d+>/g, '');
+  if (!QUESTION_RE.test(text)) return;
 
   try {
     // reply (not just send) so it's clear which message we're answering

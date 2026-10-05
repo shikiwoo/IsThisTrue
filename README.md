@@ -1,6 +1,6 @@
 # IsThisTrue
 
-Discord bot. Ping it (or type `@grok`) and it answers `yea` or `no lol`. Totally random, zero fact checking.
+Discord bot. Ping it with "is this true" (like `@bot is this true`) and it answers `yea` or `no lol`. Totally random, zero fact checking.
 
 ## Setup
 
@@ -12,4 +12,4 @@ Discord bot. Ping it (or type `@grok`) and it answers `yea` or `no lol`. Totally
 
 ## How it works
 
-It listens to every message and replies if the bot got @mentioned or the text contains `@grok`.
+It listens to every message and only replies if the bot got @mentioned AND the message contains "is this true" (also matches "is that true" / "is it true"). Plain pings or the phrase without a ping get ignored.
