@@ -1,0 +1,25 @@
+[Unit]
+Description=IsThisTrue Discord bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# change these to match where you cloned it and who should run it
+User=istt
+WorkingDirectory=/opt/is-this-true
+# .env holds DISCORD_TOKEN, systemd reads KEY=value lines from it
+EnvironmentFile=/opt/is-this-true/.env
+# check this path with `which node`
+ExecStart=/usr/bin/node src/index.js
+Restart=on-failure
+RestartSec=5
+
+# basic hardening, the bot only needs network access
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

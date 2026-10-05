@@ -13,3 +13,24 @@ Discord bot. Ping it with "is this true" (like `@bot is this true`) and it answe
 ## How it works
 
 It listens to every message and only replies if the bot got @mentioned AND the message contains "is this true" (also matches "is that true" / "is it true"). Plain pings or the phrase without a ping get ignored.
+
+## Run it as a systemd service
+
+The unit file lives in `deploy/is-this-true.service`. It assumes the project is at `/opt/is-this-true` and runs as a user called `istt`, so edit those lines if yours differ. Commands below work in Fish:
+
+```fish
+sudo useradd --system --no-create-home istt
+sudo cp -r . /opt/is-this-true
+cd /opt/is-this-true
+sudo npm install --omit=dev
+sudo cp .env.example .env
+sudo nano .env    # paste your token
+sudo chown -R istt:istt /opt/is-this-true
+sudo chmod 600 .env
+
+sudo cp deploy/is-this-true.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl enable --now is-this-true
+```
+
+Check on it with `systemctl status is-this-true` and `journalctl -u is-this-true -f`.
