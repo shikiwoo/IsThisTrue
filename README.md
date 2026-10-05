@@ -1,6 +1,6 @@
 # IsThisTrue
 
-Discord bot. Ping it with "is this true" (like `@bot is this true`) and it answers `yea` or `no lol`. Totally random, zero fact checking.
+Legally distinct Discord bot. Ping it with "is this true" (like `@grok is this true`) and it answers using the most reliable method known to man - gambling. zero fact checking.
 
 ## Setup
 
