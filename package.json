@@ -1,0 +1,16 @@
+{
+  "name": "is-this-true-bot",
+  "version": "1.0.0",
+  "description": "Discord bot that answers '@grok is this true' with yea or no lol",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "discord.js": "^14.16.0",
+    "dotenv": "^16.4.5"
+  }
+}
