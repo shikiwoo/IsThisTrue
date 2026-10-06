@@ -1,6 +1,7 @@
 # IsThisTrue
 
 Legally distinct Discord bot. Ping it (like `@grok is this true`, or really any ping) and it answers using the most reliable method known to man - gambling. zero fact checking.
+Built as a joke with claude code for a discord vc. use it if you want to :3
 
 ## Setup
 
