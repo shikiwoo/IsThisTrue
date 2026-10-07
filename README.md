@@ -54,3 +54,13 @@ No docker compose? Plain docker works too:
 docker build -t is-this-true .
 docker run -d --name is-this-true --restart unless-stopped --env-file .env is-this-true
 ```
+
+### Prebuilt image
+
+GitHub Actions builds the image (amd64 + arm64) on every push to `main` and publishes it to GitHub Container Registry, so you can skip building locally:
+
+```fish
+docker run -d --name is-this-true --restart unless-stopped --env-file .env ghcr.io/shikiwoo/isthistrue:latest
+```
+
+Pushing a tag like `v1.2.0` also publishes `1.2.0` and `1.2`. Pull requests only test the build, they don't publish. If the package is private after the first run, make it public under the repo's Packages settings.
